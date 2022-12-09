@@ -4,6 +4,7 @@ import bear from '../assets/bear.png';
 import minion from '../assets/minion.png';
 import api from '../services/api';
 import Spinner from './Spinner';
+import { milesSeparator } from '../utils';
 
 const ProductCard = ({ data }) => {
   const [quantity, setQuantity] = useState(1);
@@ -102,7 +103,7 @@ const ProductCard = ({ data }) => {
             </button> */}
           </div>
           <div>
-            <h4>{data.price} Gs.</h4>
+            <h4>{milesSeparator(data.price)} Gs.</h4>
           </div>
         </div>
       </div>
