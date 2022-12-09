@@ -3,9 +3,12 @@ import batman from '../assets/car.png';
 import bear from '../assets/bear.png';
 import minion from '../assets/minion.png';
 import api from '../services/api';
+import Spinner from './Spinner';
 
 const ProductCard = ({ data }) => {
   const [quantity, setQuantity] = useState(1);
+  const [loading, setLoading] = useState(false);
+  const [icon, setIcon] = useState(null);
 
   const changeQuantity = (action) => {
     if (action === '+') {
@@ -13,6 +16,26 @@ const ProductCard = ({ data }) => {
     } else if (quantity > 1) {
       setQuantity(quantity - 1);
     }
+  };
+
+  const addToCart = () => {
+    setLoading(true);
+    api.orders
+      .create({ product: data.id, quantity: quantity })
+      .then((res) => {
+        setIcon('success');
+        setTimeout(() => {
+          setLoading(false);
+          setIcon(null);
+        }, 3000);
+      })
+      .catch((e) => {
+        setIcon('error');
+        setTimeout(() => {
+          setLoading(false);
+          setIcon(null);
+        }, 3000);
+      });
   };
 
   return (
@@ -45,9 +68,38 @@ const ProductCard = ({ data }) => {
             <button className="btn btn-link px-2" onClick={() => changeQuantity('+')}>
               <i className="bi bi-plus-lg"></i>
             </button>
-            <button className="btn btn-primary">
-              Añadir <i className="bi bi-cart-fill"></i>
-            </button>
+            {!loading ? (
+              <button className="btn btn-primary" onClick={addToCart}>
+                <span>Añadir</span> <i className="bi bi-cart-fill"></i>
+              </button>
+            ) : icon === null ? (
+              <Spinner />
+            ) : icon === 'success' ? (
+              <button className="btn btn-success">
+                <span>Añadido</span> <i class="bi bi-cart-check-fill"></i>
+              </button>
+            ) : (
+              <button className="btn btn-danger">
+                <span>Intenta nuevamente</span> <i class="bi bi-cart-dash-fill"></i>
+              </button>
+            )}
+            {/* <button className="btn btn-primary" onClick={addToCart}>
+              {!loading ? (
+                <>
+                  <span>Añadir</span> <i className="bi bi-cart-fill"></i>
+                </>
+              ) : icon === null ? (
+                <Spinner />
+              ) : icon === 'success' ? (
+                <>
+                  <span>Añadido</span> <i class="bi bi-cart-check-fill"></i>
+                </>
+              ) : (
+                <>
+                  <span>Intenta nuevamente</span> <i class="bi bi-cart-dash-fill"></i>
+                </>
+              )}
+            </button> */}
           </div>
           <div>
             <h4>{data.price} Gs.</h4>
