@@ -12,12 +12,11 @@ const Header = () => {
           <h5 style={{ margin: 0 }}>Hola! {auth.userData.first_name}</h5>
         </div>
         <div>
-          {auth.userData.active_cart ? (
-            <button className="btn login-btn me-3" onClick={() => navigate('/checkout')}>
-              <span className="me-2">Ver carrito</span>
-              <i className="bi bi-cart-fill"></i>
-            </button>
-          ) : null}
+          <button className="btn login-btn me-3" onClick={() => navigate('/checkout')}>
+            <span className="me-2">Ver carrito</span>
+            <i className="bi bi-cart-fill"></i>
+          </button>
+
           <button className="btn btn-danger">
             <span className="me-2" onClick={() => auth.signOut()}>
               Cerrar sesión
