@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import Header from '../components/Header';
 import Spinner from '../components/Spinner';
-import ProductCard from '../context/ProductCard';
+import ProductCard from '../components/ProductCard';
 import api from '../services/api';
 const ProductListScreen = () => {
   const [loading, setLoading] = useState(true);

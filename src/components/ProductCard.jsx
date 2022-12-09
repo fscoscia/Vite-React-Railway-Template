@@ -2,6 +2,7 @@ import { useState } from 'react';
 import batman from '../assets/car.png';
 import bear from '../assets/bear.png';
 import minion from '../assets/minion.png';
+import api from '../services/api';
 
 const ProductCard = ({ data }) => {
   const [quantity, setQuantity] = useState(1);
@@ -14,15 +15,6 @@ const ProductCard = ({ data }) => {
     }
   };
 
-  const getSrc = () => {
-    if (data.title === 'Batimóvil Lego') {
-      return batman;
-    } else if (data.title === 'Oso de peluche') {
-      return bear;
-    } else {
-      return minion;
-    }
-  };
   return (
     <div className="card rounded-3 me-2" style={{ width: 400, overflow: 'hidden', border: 'none' }}>
       <img
