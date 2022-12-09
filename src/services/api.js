@@ -12,8 +12,8 @@ const errorCodes = {
 
 class API {
   constructor(collection) {
-    this.baseUrl = import.meta.env.VITE_REACT_APP_API_BASE_URL;
-    this.collectionUrl = `${import.meta.env.VITE_REACT_APP_API_BASE_URL}/${collection}`;
+    this.baseUrl = 'https://django-server-production-e15b.up.railway.app';
+    this.collectionUrl = `https://django-server-production-e15b.up.railway.app/${collection}`;
   }
 
   _handleError(error) {
