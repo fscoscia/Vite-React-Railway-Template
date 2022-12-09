@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { createContext, useContext, useState } from 'react';
 import api from '../services/api';
+import { useNavigate } from 'react-router-dom';
 
 /**
  * Decodes a JWT
@@ -82,7 +83,7 @@ function AuthProvider({ children }) {
     interceptorId = null;
     localStorage.removeItem('accessToken');
     localStorage.removeItem('userData');
-    window.location.reload();
+    window.location.replace('/');
   };
 
   // Check that interceptor is added when authentication status changes
