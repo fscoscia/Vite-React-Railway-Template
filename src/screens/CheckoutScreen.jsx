@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 const CheckoutScreen = () => {
   const [cart, setCart] = useState(null);
   const [loading, setLoading] = useState(true);
-
+  const navigate = useNavigate();
   const onCheckoutClick = () => {
     api.carts
       .checkout(cart.id)
