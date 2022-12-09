@@ -93,9 +93,31 @@ class UserAPI extends API {
   }
 }
 
+class CartAPI extends API {
+  async getActiveCart() {
+    try {
+      const response = await axios.get(`${this.collectionUrl}/active/`);
+      return Promise.resolve(response.data);
+    } catch (e) {
+      return Promise.reject(this._handleError(e));
+    }
+  }
+  async checkout(id) {
+    const data = { cart: id };
+    try {
+      const response = await axios.post(`${this.collectionUrl}/checkout/`, data);
+      return Promise.resolve(response.data);
+    } catch (e) {
+      return Promise.reject(this._handleError(e));
+    }
+  }
+}
+
 const api = {
   users: new UserAPI('users'),
   products: new API('products'),
+  orders: new API('orders'),
+  carts: new CartAPI('carts'),
 };
 
 export default api;
