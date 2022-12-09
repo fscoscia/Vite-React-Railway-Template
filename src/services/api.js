@@ -45,6 +45,7 @@ class API {
     return Promise.reject({
       code: errorCodes.unexpected,
       data: error.response?.data,
+      e: 'a',
     });
   }
 
