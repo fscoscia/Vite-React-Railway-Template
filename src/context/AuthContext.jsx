@@ -59,7 +59,7 @@ function AuthProvider({ children }) {
      */
     try {
       const response = await api.users.getToken(username, password);
-      accessToken = response.accessToken;
+      accessToken = response.access;
       localStorage.setItem('accessToken', accessToken);
       tokenData = parseJwt(accessToken);
       interceptorId = axios.interceptors.request.use(requestInterceptor);

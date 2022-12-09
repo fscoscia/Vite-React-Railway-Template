@@ -1,27 +1,28 @@
+@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css');
 :root {
-    --red1: #f5624d;
-    --red2: #cc231e;
-    --green1: #34a65f;
-    --green2: #0f8a5f;
-    --blue: #235e6f;
+  --red1: #f5624d;
+  --red2: #cc231e;
+  --green1: #34a65f;
+  --green2: #0f8a5f;
+  --blue: #235e6f;
 }
 
 .login-container {
-    background-color: var(--red1);
+  background-color: var(--red1);
 }
 
 .form-container {
-    background-color: #ffffff;
-    width: 500px;
-    height: 600px;
+  background-color: #ffffff;
+  width: 500px;
+  height: 600px;
 }
 
 .login-btn {
-    background-color: var(--green1);
-    color: #ffffff;
+  background-color: var(--green1);
+  color: #ffffff;
 }
 
 .login-btn:hover {
-    background-color: var(--green2);
-    color: #ffffff;
+  background-color: var(--green2);
+  color: #ffffff;
 }
